@@ -1,0 +1,10 @@
+libdir=c:/temp/plplot-install/lib
+includedir=c:/temp/plplot-install/include/plplot
+drvdir=c:/temp/plplot-install/lib/plplot5.9.6/driversd
+
+Name: PLplot 
+Description: Scientific plotting library (double precision)
+Requires: 
+Version: 5.9.6
+Libs: -L${libdir} -lplplotd  -lcsirocsa -lqsastime
+Cflags: -I${includedir} 
