@@ -25,7 +25,7 @@ Source: "C:\temp\plplot-install\*"; DestDir: "{app}\plplot-install"; Flags: igno
 Source: "C:\temp\installer\gtk\*"; DestDir: "{app}\gtk"; Flags: ignoreversion createallsubdirs recursesubdirs
 Source: "C:\temp\installer\ext-cairo-test.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\temp\installer\scripts\*"; DestDir: "{app}\scripts"; Flags: ignoreversion createallsubdirs recursesubdirs
-
+Source: "C:\temp\lua-graphing\luajit\*"; DestDir: "{app}\luajit"; Flags: ignoreversion createallsubdirs recursesubdirs
 
 [Registry]
 Root: "HKLM"; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: string; ValueName: "PLPLOT_HOME_ENV"; ValueData: "{app}/plplot-install"; Flags: uninsdeletevalue
