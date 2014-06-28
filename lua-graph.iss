@@ -4,6 +4,7 @@
 
 AppName=lua-graph
 AppVerName=lua-graph
+AppVersion=1.0
 AppPublisher=Company
 DisableDirPage=false
 DefaultDirName=C:\lua-graph
@@ -20,18 +21,13 @@ ChangesEnvironment=true
 [Tasks]
 Name: modifypath; Description: Add application directory to your environment path
 
-[Files]
-Source: "C:\temp\plplot-install\*"; DestDir: "{app}\plplot-install"; Flags: ignoreversion createallsubdirs recursesubdirs
-Source: "C:\temp\installer\gtk\*"; DestDir: "{app}\gtk"; Flags: ignoreversion createallsubdirs recursesubdirs
-Source: "C:\temp\installer\ext-cairo-test.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\temp\installer\scripts\*"; DestDir: "{app}\scripts"; Flags: ignoreversion createallsubdirs recursesubdirs
-Source: "C:\temp\lua-graphing\luajit\*"; DestDir: "{app}\luajit"; Flags: ignoreversion createallsubdirs recursesubdirs
-
 [Registry]
-Root: "HKLM"; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: string; ValueName: "PLPLOT_HOME_ENV"; ValueData: "{app}/plplot-install"; Flags: uninsdeletevalue
-Root: "HKLM"; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: string; ValueName: "PLPLOT_LIB"; ValueData: "{app}/plplot-install/share/plplot5.9.6"; Flags: uninsdeletevalue
-Root: "HKLM"; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: string; ValueName: "PLPLOT_DRV_DIR"; ValueData: "{app}/plplot-install/lib/plplot5.9.6/driversd"; Flags: uninsdeletevalue
+Root: "HKLM"; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: string; ValueName: "PLPLOT_HOME_ENV"; ValueData: "{app}/5.1/clibs/plplot-install"; Flags: uninsdeletevalue
+Root: "HKLM"; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: string; ValueName: "PLPLOT_LIB"; ValueData: "{app}/5.1/clibs/plplot-install/share/plplot5.9.6"; Flags: uninsdeletevalue
+Root: "HKLM"; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: string; ValueName: "PLPLOT_DRV_DIR"; ValueData: "{app}/5.1/clibs/plplot-install/lib/plplot5.9.6/driversd"; Flags: uninsdeletevalue
 
+[Files]
+Source: "C:\temp\lua-graphing\lua\*"; DestDir: "{app}"; Flags: ignoreversion createallsubdirs recursesubdirs
 
 [Code]
 const
@@ -40,10 +36,11 @@ const
 
 function ModPathDir(): TArrayOfString;
 begin
-	setArrayLength(Result, 3)
-	Result[0] := ExpandConstant('{app}\plplot-install\lib\plplot5.9.6\driversd');
-	Result[1] := ExpandConstant('{app}\plplot-install\bin');
-	Result[2] := ExpandConstant('{app}\gtk\bin');
+	setArrayLength(Result, 4)
+	Result[0] := ExpandConstant('{app}\5.1\clibs\plplot-install\lib\plplot5.9.6\driversd');
+	Result[1] := ExpandConstant('{app}\5.1\clibs\plplot-install\bin');
+	Result[2] := ExpandConstant('{app}\5.1\clibs\gtk\bin');
+  Result[3] := ExpandConstant('{app}\5.1\clibs');
 end;
 
 #include "modpath.iss"
